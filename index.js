@@ -31,6 +31,9 @@ module.exports = {
         },
         privateKey: function(context) {
           return context.privateKey;
+        },
+        passphrase: function(context) {
+          return context.passphrase;
         }
       },
 
@@ -43,7 +46,8 @@ module.exports = {
             username: this.readConfig('remoteUser'),
             path: this.readConfig('distDir'),
             remoteDir: this.readConfig('remoteDir'),
-            privateKey: fs.readFileSync(this.readConfig('privateKey'))
+            privateKey: fs.readFileSync(this.readConfig('privateKey')),
+            passphrase: this.readConfig('passphrase')
           },
           sftp = new Sftp(options);
 
